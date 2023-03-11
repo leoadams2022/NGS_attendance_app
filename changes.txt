@@ -1,0 +1,24 @@
+//DONE----------1- add a reason for being late or leaving erlay and view it in the agent timesheet
+//DONE----------3- able to edite time in even if agent still did not end his day
+//DONE----------- fix the order of the mesgs for the agent
+//DONE----------- send the admin notifactions  agent got in llate
+//DONE----------- add an alerts section for the admin 
+//DONE----------- finx entery time and leave time 24H format for agent auto genrated msgs
+//DONE----------- save sgin in with cookies
+//DONE----------- fix 404 page links for the admin
+//DONE----------- add a page icon for the 404 page
+//DONE----------- show username umder the name on the chat page
+//DONE----------- auto delete autoMessages and admin_alerts after a given time to save space 
+          add for autoMessages and admin_alerts used:
+          annnouncement_class-dashboard.cont.admin-dashboard.admin
+//DONE----------- add a good landing chat for the caht page
+//DONE----------- the profile upload dosenot return any erorrs fix it
+- add send images to the chat app
+ -- upload image to images folder with a spechal name.jpg
+ -- add a msg to the msgs table 
+ -- the msg colume must be "img_img_img_'the spechal name'.jpg
+- provent admin from going into agent pages
+- the msg seen in the admin page dosenot reflect without refrashing the page
+- add a day off request or a 15 day's notice or a complaine secreet or public
+- crate one time use pass token for ppl to sgin up
+- add delet user for admin and reset the password 

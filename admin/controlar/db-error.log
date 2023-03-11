@@ -1,0 +1,90 @@
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/attendance.cont.admin.php?
+line = 90
+24/02/2023 23:41:30
+
+INSERT INTO attendance (time_in,time_out)VALUES)
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 00:39:14
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = walidali ORDER BY `date_send` ASC
+42S22
+1054
+Unknown column 'walidali' in 'where clause'
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 17:51:25
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'testUS' ORDER BY `date_send` ASC LIMIT 5 OFFSET 
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 18:01:28
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'testUS' ORDER BY `date_send` ASC LIMIT 5 OFFSET -0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 18:02:39
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'testUS' ORDER BY `date_send` ASC LIMIT 5 OFFSET -0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 19:54:08
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'broUS' ORDER BY `date_send` ACS LIMIT 5 OFFSET 0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ACS LIMIT 5 OFFSET 0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 19:54:12
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'broUS' ORDER BY `date_send` ACS LIMIT 5 OFFSET 0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ACS LIMIT 5 OFFSET 0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 19:57:04
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'broUS' ORDER BY `date_send` ACS LIMIT 5 OFFSET 0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ACS LIMIT 5 OFFSET 0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 19:57:16
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'broUS' ORDER BY `date_send` ACS LIMIT 5 OFFSET 0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ACS LIMIT 5 OFFSET 0' at line 1
+
+C:/xampp/htdocs/MyProject/LoginAgain/admin/controlar/announcements.cont.admin.php?
+line = 90
+03/03/2023 19:58:40
+
+SELECT `id`, `recipient`, `campaign`, `status`, `msg`, `auther`, `created_at`, `date_send` FROM `announcements` WHERE `recipient` = 'broUS' ORDER BY `date_send` ACS LIMIT 5 OFFSET 0
+42000
+1064
+You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ACS LIMIT 5 OFFSET 0' at line 1
+
