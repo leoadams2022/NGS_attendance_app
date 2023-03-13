@@ -310,12 +310,18 @@ public function adding_agent_validate($first_name,$last_name,$user_name,$gender,
     }
     else{
         return 'all_good';
+        // return (
+        //     ' / first_name/ '.$first_name.' /last_name / '.$last_name.' /user_name / '.$user_name.' /gender / '.$gender.' / password/ '.$password.' /email / '.$email.' /phone / '.$phone.' /address / '.$address.' / campaign/ '.$campaign.' / salary/ '.$salary.' /enter_time / '.$enter_time.' /leave_time / '.$leave_time.' /education / '.$education.' / experience/ '.$experience
+        // );
     }   
 }
 
 public function adding_user($first_name,$last_name,$user_name,$gender,$password,$email,$phone,$address,$campaign,$salary,$enter_time,$leave_time,$education,$experience){
+
     //'id', 'first_name', 'last_name', 'email', 'user_name', 'gender', 'phone', 'address', 'password', 'campaign', 'rank', 'education', 'experience', 'target', 'salary', 'dedication', 'enter_time', 'leave_time', 'created_at'
+
     $validation = $this->adding_agent_validate($first_name,$last_name,$user_name,$gender,$password,$email,$phone,$address,$campaign,$salary,$enter_time,$leave_time,$education,$experience);
+
     if($validation === 'all_good'){
         $dup_username = $this->username_exist($user_name);
         if(!$dup_username){
@@ -366,6 +372,10 @@ public function adding_user($first_name,$last_name,$user_name,$gender,$password,
     }
         // Get last insert ID
 	// echo $Crud->getLastId();
+}
+
+public function adding_user_tst($first_name,$last_name,$user_name,$gender,$password,$email,$phone,$address,$campaign,$salary,$enter_time,$leave_time,$education,$experience){
+ return ($campaign .$salary .$enter_time .$leave_time);
 }
 
 

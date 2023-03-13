@@ -1,5 +1,7 @@
 <?php
 include '../../clasess/Users_Class.php';
+include '../../clasess/Token_Class.php';
+
 /*
 // required must not be empty
 $_POST['first_name']  //only latter's length less than 10
@@ -32,5 +34,13 @@ if(isset($_POST['needTo'])){
     //  $adding_user = $users_class->adding_user($_POST['first_name'],$_POST['last_name'],$_POST['user_name'],$_POST['gender'],$_POST['password'],$_POST['email'],$_POST['phone'],$_POST['address'],$_POST['campaign'],$_POST['salary'],$_POST['enter_time'],$_POST['leave_time'],$_POST['education'],$_POST['experience']);
     //  print_r(json_encode($validat));
      echo json_encode($adding_user);
+    }elseif($_POST['needTo'] === 'create_sgin_up_token'){
+        $token_class = new Token_Class();
+        $data = $token_class->add_sgin_up_token();
+        if($data != "bad"){
+            echo $data;
+        }else{
+            print_r('something went wrong');
+        }
     }
 }

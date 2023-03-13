@@ -21,7 +21,9 @@ include 'compo/head.admin.php';
 <script src="<?=ROOT?>admin/compo/assets/js/jquery-search.js"></script>
 <title>Admin Tools</title>
 <style>
-
+.generate_sgin_up_link{
+  display: none
+}
 </style>
 </head>
 <?php
@@ -45,6 +47,11 @@ include 'compo/navbar.admin.php';
                   `gender`, ``,      `campaign` salary   ,enter_time`, `leave_time`
                   `education`, `experience`, ``,
                   ``, ``, `, `` -->
+        <a  href="#generate_sgin_up_link" id="geneeate_sgin_up_link_a" >Open ajax content in lightbox</a>
+        <div id="generate_sgin_up_link"  class="generate_sgin_up_link">
+          <a id="h3_link">generate_sgin_up_link</a>
+        </div>
+
         <form action="">
           <div class="row">
               <div class="col-md-6 col-lg-4">
@@ -77,7 +84,7 @@ include 'compo/navbar.admin.php';
               </div>
               <div class="col-md-6 col-lg-4">
                 <label for="" class="form-label">phone :<span class="required_span ms-2 text-danger fs-5">*</span></label>
-                <input type="text" id="phone_input" class="form_input form-control" placeholder="Enter phone" required>
+                <input type="number" min="0" id="phone_input" class="form_input form-control" placeholder="Enter phone" required>
               </div>
               <div class="col-md-6 col-lg-4">
                 <label for="" class="form-label">address :<span class="required_span ms-2 text-danger fs-5">*</span></label>
@@ -89,7 +96,7 @@ include 'compo/navbar.admin.php';
               </div>
               <div class="col-md-6 col-lg-4">
                 <label for="" class="form-label">salary :</label>
-                <input type="number" id="salary_input" class="form_input form-control" placeholder="Enter salary">
+                <input type="number" min="0" max="5000"id="salary_input" class="form_input form-control" placeholder="Enter salary">
               </div>
               <div class="col-md-6 col-lg-4">
                 <label for="" class="form-label">enter_time :</label>
@@ -108,7 +115,9 @@ include 'compo/navbar.admin.php';
                 <textarea type="text" id="experience_input" class="form_input form-control" placeholder="Enter experience"></textarea>
               </div>
               <div class="col-md-12">
-                <div class="alert alert-danger" id="alertbox" style='display:none;' role="alert">
+                <!-- alertbox_success alertbox_danger -->
+                <div class="alert alert-danger" id="alertbox_danger" style='display:none;' role="alert"></div>
+                <div class="alert alert-success" id="alertbox_success" style='display:none;' role="alert"></div>
               </div>
               <div class="col-md-12">
                 <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" id="sginup">ADD Agent</button>
@@ -127,8 +136,25 @@ include 'compo/navbar.admin.php';
   </div>
   
 <script>
-// adding agent
+
 $(document).ready(function(){
+  // geneeate_sgin_up_link_a
+    $('#geneeate_sgin_up_link_a').featherlight({
+	    targetAttr: '#generate_sgin_up_link'
+    });
+    $('#geneeate_sgin_up_link_a').click(function(){
+      // console.log('pup up is operm');
+      var post_data = {
+          needTo: 'create_sgin_up_token',
+      };
+      // Send a POST request to the server
+      $.post('controlar/sgin_up.cont.admin.php', post_data).done(function(data) {
+          console.log(data);
+          $('.featherlight-content > div > #h3_link').text('<?=ROOT?>'+data);
+      }); 
+    })
+  //----------------------------------------------------------------------.// geneeate_sgin_up_link_a 
+  // adding agent
     $("form").submit(function(event){
         // Stop form from submitting normally
         event.preventDefault();
@@ -171,10 +197,10 @@ $(document).ready(function(){
           leave_time = null;
         }
 
-        console.log(first_name,  last_name, user_name, gender,  password,  email,  phone,  address, campaign, education,  experience,  typeof salary,  enter_time,  leave_time)
-/*
+        // console.log(first_name,  last_name, user_name, gender,  password,  email,  phone,  address, campaign, education,  experience,  typeof salary,  enter_time,  leave_time);
+      /*
         `first_name`, `last_name`, `email`, `user_name`, `gender`, `phone`, `address`, `password`, `campaign`, ``, `education`, `experience`, ``, `salary`, ``, `enter_time`, `leave_time`,
-*/
+      */
         $.ajax({
             url: 'controlar/sgin_up.cont.admin.php',
             type: 'POST', 
@@ -209,14 +235,14 @@ $(document).ready(function(){
                 console.log(data);
                 var res = JSON.parse(data);
                 if(res.state == 'good'){
-                  $("#alertbox").css("display", "block");
-                  $('#alertbox').text(res.msg);
-                  // console.log(res.url);
-                  // window.location.href= res.url;
+                  //alertbox_success alertbox_danger
+                  $('#alertbox_success').html(res.msg);
+                  $('#alertbox_success').show(500);
+                  setTimeout(() => {$('#alertbox_success').hide(500);}, 3000);
                 }else{
-                  $("#alertbox").css("display", "block");
-                  $('#alertbox').text(res.msg);
-                  console.log(res.msg);
+                 $('#alertbox_danger').html(res.msg);
+                  $('#alertbox_danger').show(500);
+                  setTimeout(() => {$('#alertbox_danger').hide(500);}, 3000);
                 }      
                 },
             error: function (Xhr, textStatus, errorMessage) {
@@ -224,8 +250,8 @@ $(document).ready(function(){
                 }                                       
           });
     });
+  //----------------------------------------------------------------------.// adding agent        
 });      
-//----------------------------------------------------------------------.// adding agent        
 </script>
 <?php
 include 'compo/foot.admin.php';

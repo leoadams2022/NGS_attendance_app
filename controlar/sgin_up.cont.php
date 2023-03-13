@@ -1,22 +1,28 @@
 <?php
 include '../clasess/Users_Class.php';
-if(isset($_POST['firstName'])&&isset($_POST['lastName'])&&isset($_POST['email'])&&isset($_POST['userName'])&&isset($_POST['gender'])&&isset($_POST['phone'])&&isset($_POST['address'])&&isset($_POST['password'])){
-    $usercalss = new Users_Class;
-    $Validate = $usercalss->Validate_sgin_up($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['userName'],$_POST['gender'],$_POST['phone'],$_POST['address'],$_POST['password']);
-    if($Validate == 'allGood'){
-         $adding = $usercalss->adding_user($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['userName'],$_POST['gender'],$_POST['phone'],$_POST['address'],$_POST['password']);
-        if($adding['state'] === 'good'){
-            $results = ['state'=> 'good','msg'=> $adding['msg'],'url'=> 'sgin_in.php','respond'=>''];
-            echo json_encode($results);
+include '../clasess/Token_Class.php';
+
+
+if(isset($_POST['needTo'])){
+    if($_POST['needTo'] === 'add_new_agent' && isset($_POST['key1']) && isset($_POST['key2'])){
+        $token = $_POST['key1'];
+        $token_id = $_POST['key2'];
+        $token_class =  new Token_Class();
+        $vaildate_token = $token_class->Validate_sgin_up_token($token,$token_id);
+        if($vaildate_token === 'good'){
+            $users_class = new Users_Class();
+            $adding_user = $users_class->adding_user($_POST['first_name'],$_POST['last_name'],$_POST['user_name'],$_POST['gender'],$_POST['password'],$_POST['email'],$_POST['phone'],$_POST['address'],$_POST['campaign'],$_POST['salary'],$_POST['enter_time'],$_POST['leave_time'],$_POST['education'],$_POST['experience']);
+            echo json_encode($adding_user);
+            if(isset($adding_user['state'])){
+                if($adding_user['state'] == 'good'){
+                    $token_class->delete_token_admin($token_id);
+                }
+            }
         }else{
-            $results = ['state'=> 'bad','msg'=> $adding['msg'],'url'=> '','respond'=>''];
+            $results = array('state'=> 'bad','msg'=> 'this link has been used already','url'=> '','respond'=>'');
             echo json_encode($results);
         }
-    }else{
-        $results = ['state'=> 'bad','msg'=> $Validate,'url'=> '','respond'=>''];
-        echo json_encode($results);
-    } 
-}else{
-   $results = ['state'=> 'bad','msg'=> 'a POST Var is not set','url'=> '','respond'=>''];
-   echo json_encode($results);
+        // echo json_encode($vaildate_token);
+        
+    }
 }

@@ -13,12 +13,13 @@
           annnouncement_class-dashboard.cont.admin-dashboard.admin
 //DONE----------- add a good landing chat for the caht page
 //DONE----------- the profile upload dosenot return any erorrs fix it
+//DONE----------- crate one time use pass token for ppl to sgin up
+//DONE----------- provent admin from going into agent pages
+-  fix the include calss's at the head cuz sub pages is not working
 - add send images to the chat app
  -- upload image to images folder with a spechal name.jpg
  -- add a msg to the msgs table 
  -- the msg colume must be "img_img_img_'the spechal name'.jpg
-- provent admin from going into agent pages
 - the msg seen in the admin page dosenot reflect without refrashing the page
 - add a day off request or a 15 day's notice or a complaine secreet or public
-- crate one time use pass token for ppl to sgin up
 - add delet user for admin and reset the password 

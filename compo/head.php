@@ -82,7 +82,11 @@ if(isset($_SESSION["user_name"])){
     }
   }
 }
-
+if(isset($_SESSION["rank"])){
+  if($_SESSION["rank"] === 'admin'){
+    header('location: '.ROOT.'/admin/Dashboard.admin.php');
+  }
+}
 
   
 ?>

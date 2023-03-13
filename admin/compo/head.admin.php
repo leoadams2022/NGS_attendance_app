@@ -69,8 +69,7 @@ if(isset($_SESSION["user_name"])){
     }else{
       header('location: sgin_in.php');
     }
-  }
-    
+  }  
 }
 if($rank === 'admin'){
 

@@ -40,4 +40,3 @@ var post_data = {
 $.post('URL', post_data).done(function(data) {
     console.log(data);
 }); 
-// hi from vs code
