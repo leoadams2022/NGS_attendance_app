@@ -109,7 +109,7 @@ setInterval(
 					msgsUl.innerHTML = `<div class="no_more_div"><span class="no_more_span text-muted fw-light fs-6">No alerts found</span></div>`;
 				}else{
 					var msgs_obj = res.respond;
-					// msgs_obj = msgs_obj.reverse()
+					msgs_obj = msgs_obj.reverse()
 					$('#alerts_ul').html('');
 					var msgsUl = document.getElementById('alerts_ul');
 					msgs_obj.forEach(function (msg, i){

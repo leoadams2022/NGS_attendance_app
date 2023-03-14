@@ -232,7 +232,7 @@ function get_msgs(){
             //  let jsD = _.sortBy(res.respond.reverse(), 'recipient');
              if(res.msg === 'No Messages found'){
                 var msgsUl = document.getElementById('msgsUL');
-                msgsUl.innerHTML = 'No Messages found';
+                msgsUl.innerHTML = `<div class="no_more_div"><span class="no_more_span text-muted fw-light fs-6">There is no more messsges</span></div>`;
             }else{
                 var msgs_obj = res.respond;
                 // msgs_obj = msgs_obj.reverse()
@@ -302,7 +302,7 @@ function get_more_msgs(){
              console.log(res.msg,offset,limit);
              if(res.msg === 'No Messages found'){
                 var msgsUl = document.getElementById('msgsUL');
-                msgsUl.insertAdjacentHTML('beforeend', 'No Messages found');
+                msgsUl.insertAdjacentHTML('beforeend', `<div class=" no_more_div d-flex justify-content-center align-items-center mt-2 mb-2" ><span class="no_more_span text-muted fw-light fs-6">There is no more messsges</span></div>`);
             }else{
                 var msgs_obj = res.respond;
                 // msgs_obj = msgs_obj.reverse()

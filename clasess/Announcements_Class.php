@@ -227,7 +227,7 @@ class Announcements_Class extends Crud {
         if($inOrOut === 'in'){
             $msg = $agentUserName.' got in late';
         }elseif($inOrOut === 'out'){
-            $msg = $agentUserName.' got in erlay';
+            $msg = $agentUserName.' left erlay';
         }
         date_default_timezone_set("Etc/GMT-2");
         $adding_time = date("Y-m-d H:i:s");

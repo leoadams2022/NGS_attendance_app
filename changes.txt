@@ -1,5 +1,5 @@
-//DONE----------1- add a reason for being late or leaving erlay and view it in the agent timesheet
-//DONE----------3- able to edite time in even if agent still did not end his day
+//DONE----------- add a reason for being late or leaving erlay and view it in the agent timesheet
+//DONE----------- able to edite time in even if agent still did not end his day
 //DONE----------- fix the order of the mesgs for the agent
 //DONE----------- send the admin notifactions  agent got in llate
 //DONE----------- add an alerts section for the admin 
@@ -15,7 +15,9 @@
 //DONE----------- the profile upload dosenot return any erorrs fix it
 //DONE----------- crate one time use pass token for ppl to sgin up
 //DONE----------- provent admin from going into agent pages
-//DONE-----------  fix the include calss's at the head cuz sub pages is not working
+//DONE----------- fix the include calss's at the head cuz sub pages is not working
+//DONE----------- Time in the attendance is not working at all its just so fucking crazy when converting string into date obj if it is 12:30 PM it gos into DB as 12:30 and then it shows on the attendance page as 12:30 AM
+//DONE----------- the admin alerts order is reversed new alerts are shoing up at the buttom of the list
 - add send images to the chat app
  -- upload image to images folder with a spechal name.jpg
  -- add a msg to the msgs table 
@@ -23,3 +25,4 @@
 - the msg seen in the admin page dosenot reflect without refrashing the page
 - add a day off request or a 15 day's notice or a complaine secreet or public
 - add delet user for admin and reset the password 
+- add admin can delete a day in the attendance page

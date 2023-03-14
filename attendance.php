@@ -221,7 +221,7 @@ include 'compo/navbar.php';
                     data: {
                         timeZone: louclTimeZone,
                         needTo: 'in',
-                        if_late: if_late// will be true or false
+                        if_late: if_late// will be 'true' or 'false'
                         },  
                     beforeSend: function() { 
                         $body = $("body");
@@ -258,39 +258,40 @@ include 'compo/navbar.php';
         if(typeof(in_timeing_obj) != "undefined" && in_timeing_obj !== null) {
             let rightNow = new Date();
             console.log(compareDates_2(out_timeing_obj,rightNow))
-            if(compareDates_2(rightNow,in_timeing_obj) === 'd2 before d1'){
+            if(compareDates_2(out_timeing_obj,rightNow) === 'd2 before d1'){
                 if_late = "true";
             }else{
                 if_late = "false";
             }
         }
-            event.preventDefault();
-            var louclTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            $.post('controlar/attendance.cont.php',
-            {
-            timeZone: louclTimeZone,
-            needTo: 'out',
-            if_late: if_late
-            },
-            function(data){
-                console.log(data);
-                var res = JSON.parse(data);
-                if(res.state == 'good'){
-                //   console.log(res.msg);
-                //   console.log(res.respond);
-                    im_i_in_or_out(500);
-                    $('#alertbox_success').html(res.msg);
-                    $('#alertbox_success').show();
-                    setTimeout(() => { $('#alertbox_success').hide(500);  }, 3000);
-                }else{
-                    $('#alertbox_danger').html(res.msg);
-                    $('#alertbox_danger').show();
-                    setTimeout(() => { 
-                        $('#alertbox_danger').hide(500); 
-                        location.reload(true);
-                    }, 1000);
-                }
-            });
+        console.log(if_late)
+        event.preventDefault();
+        var louclTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        $.post('controlar/attendance.cont.php',
+        {
+        timeZone: louclTimeZone,
+        needTo: 'out',
+        if_late: if_late
+        },
+        function(data){
+            console.log(data);
+            var res = JSON.parse(data);
+            if(res.state == 'good'){
+            //   console.log(res.msg);
+            //   console.log(res.respond);
+                im_i_in_or_out(500);
+                $('#alertbox_success').html(res.msg);
+                $('#alertbox_success').show();
+                setTimeout(() => { $('#alertbox_success').hide(500);  }, 3000);
+            }else{
+                $('#alertbox_danger').html(res.msg);
+                $('#alertbox_danger').show();
+                setTimeout(() => { 
+                    $('#alertbox_danger').hide(500); 
+                    location.reload(true);
+                }, 1000);
+            }
+        });
     });
     //------------
     let in_timeing_obj,out_timeing_obj
@@ -369,31 +370,7 @@ include 'compo/navbar.php';
         });
     }
     //------------
-    // check if agent is late 
-    function compareDates(now, must){ 
-        if(must === 'Not_Set' || now === 'Not_Set'){
-            return 'good';
-        }else{
-            let date1 = now.getHours();
-            let date2 = must.getHours();
-            let date3 = now.getMinutes();
-            let date4 = must.getMinutes();
-        
-            if (date1 < date2) {
-                return 'good';
-            } else if (date1 > date2) {
-                return 'bad';
-            } else {
-                        if (date3 < date4) {
-                            return 'good';
-                        } else if (date3 > date4) {
-                            return 'bad';
-                        } else {
-                            return 'good';
-                        }
-            }
-        }
-    }
+  
     //------------
     function drawTable(jsData, tbody) {
         var tr, td;
@@ -493,66 +470,20 @@ include 'compo/navbar.php';
     //------------
     function DateStringToObject(DateString, return_Type = 'DateObj') {
         if(DateString !== null){
-
-            var month, day, year, HH, MM, SS, H, PmAM;
-            //var DateString = '10/13/2025, 8:57:39 AM';
-            // var DTparts = DateString.split(',');
+            var month, day, year, HH, MM, SS;
             var TheDate = DateString.slice(0, 10);//DTparts[0];
             var TheTime = DateString.slice(10);//DTparts[1];
-            // console.log( TheDate,'---',TheTime);
-            //geting the month day year
-            /*
-            it is y m d
-            must be  m d y
-            2023-02-10
-            */
             var DateParts = TheDate.split('-');
-            month = DateParts[1];
-            day = DateParts[2];
-            year = DateParts[0];
-            month = Number(month);
-            day = Number(day);
-            year = Number(year);
-            //console.log( month,'---',day,'---',year);// month day year
-            //geting the HH MM SS PmAm
-            var PmAmCheack = TheTime.endsWith("PM");
-            if (PmAmCheack == true) {
-                PmAm = 'PM';
-                TheTime = TheTime.replace("PM", "");
-            } else if (PmAmCheack == false) {
-                PmAm = 'AM';
-                TheTime = TheTime.replace("AM", "");
-            }
+            month = DateParts[1]; day = DateParts[2]; year = DateParts[0];
+            month = Number(month); day = Number(day); year = Number(year);
+            // console.log('day: ',day,' month: ',month,' year: ',year)
             var TimeParts = TheTime.split(':');
-            HH = TimeParts[0];
-            MM = TimeParts[1];
-            SS = TimeParts[2];
-            HH = Number(HH);
-            MM = Number(MM);
-            SS = Number(SS);
-            //console.log(HH,'---',MM,'---',SS,'---',PmAm)// '8 --- 57 --- 39'
-            if (PmAm == 'PM') {
-                if (HH == 12) {
-                    H = 12
-                } else {
-                    H = HH + 12
-                }
-            } else {
-                if (HH == 12) {
-                    H = 0
-                } else {
-                    H = HH
-                }
-            }
-            //console.log(H);
+            HH = TimeParts[0]; MM = TimeParts[1]; SS = TimeParts[2];
+            HH = Number(HH); MM = Number(MM); SS = Number(SS);
+            // console.log('hour: ',HH,' min: ',MM,' sec: ',SS)
             var D = new Date();
-            D.setFullYear(year);
-            D.setMonth(month - 1);
-            D.setDate(day);
-            D.setHours(H);
-            D.setMinutes(MM);
-            D.setSeconds(SS);
-            //console.log(D);
+            D.setFullYear(year); D.setMonth(month-1); D.setDate(day);
+            D.setHours(HH); D.setMinutes(MM); D.setSeconds(SS);
             if(return_Type === 'DateObj'){
                 return D;
             }else if(return_Type === 'infoObj'){
@@ -648,20 +579,17 @@ include 'compo/navbar.php';
     }
     //------------
     function compareDates_2(d1,d2){
-        d1h=d1.getHours();
-        d2h=d2.getHours();
-        d1m=d1.getMinutes();
-        d2m=d2.getMinutes();
-        if(`${d1h}:${d1m}` > `${d2h}:${d2m}`){
-            // console.log(`${d1.toLocaleTimeString("en-US")} > ${d2.toLocaleTimeString("en-US")}`);
-            // console.log('d2 before d1')
+        //.setFullYear(y, m, d)
+        //m(0-11) d(1-31) y(9999)
+        d1.setFullYear(2023, 0, 1); d2.setFullYear(2023, 0, 1);
+        if(d1 > d2){
+            // return '(d1 > d2)'
             return('d2 before d1')
-        }else if(`${d1h}:${d1m}` < `${d2h}:${d2m}`){
-            // console.log(`${d1.toLocaleTimeString("en-US")} < ${d2.toLocaleTimeString("en-US")}`)
-            // console.log('d1 before d2')
+        }else if(d2 > d1){
+            // return '(d2 > d1)'
             return('d1 before d2')
         }else{
-            // console.log('d1 = d2')
+            // return '(d1 = d2)'
             return('d1 = d2')
         }
     }

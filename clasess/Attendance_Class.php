@@ -63,7 +63,7 @@ class Attendance_Class extends Crud {
         // this day is not in the Db
         $is_day_over = $this->is_day_over($user_name,$user_id);
         if($is_day_over === true){
-                $today_time_in = date("Y-m-d H:i:s");
+                $today_time_in = date("Y-m-d H:i:s",time());
                 // $Crud =   new Crud(DATA_BASE,USER,PASSWORD);
                 $data = $this->save(array(
                 'table'    => 'attendance',

@@ -121,8 +121,3 @@ if(isset($_POST['needTo'])){
     echo json_encode($results);
   }
 }
-
-
-/*
-
-  */
