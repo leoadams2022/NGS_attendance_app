@@ -43,13 +43,12 @@ include 'compo/navbar.admin.php';
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active text-dark mt-2 w-100" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-        <!-- ``, `first_name`, `last_name`,`user_name` `email`, , `phone`,`password`, 
-                  `gender`, ``,      `campaign` salary   ,enter_time`, `leave_time`
-                  `education`, `experience`, ``,
-                  ``, ``, `, `` -->
-        <a  href="#generate_sgin_up_link" id="geneeate_sgin_up_link_a" >Open ajax content in lightbox</a>
-        <div id="generate_sgin_up_link"  class="generate_sgin_up_link">
-          <a id="h3_link">generate_sgin_up_link</a>
+        <div class="d-flex justify-content-center align-items-center mt-2 mb-2">
+          <a  href="#generate_sgin_up_link" id="geneeate_sgin_up_link_a" class="btn btn-outline-success">generate one time sgin up link</a>
+          <div id="generate_sgin_up_link"  class="generate_sgin_up_link" style="width: 80vw;">
+            <textarea name="" id="link_textarea" class="form-control" disabled readonly></textarea>
+            <button id="" class="btn btn-outline-secondary mt-2" onclick="unsecuredCopyToClipboard('.featherlight-content > div > #link_textarea')">Copy</button>
+          </div>
         </div>
 
         <form action="">
@@ -149,8 +148,8 @@ $(document).ready(function(){
       };
       // Send a POST request to the server
       $.post('controlar/sgin_up.cont.admin.php', post_data).done(function(data) {
-          console.log(data);
-          $('.featherlight-content > div > #h3_link').text('<?=ROOT?>'+data);
+          // console.log(data);
+          $('.featherlight-content > div > #link_textarea').val('<?=ROOT?>'+data);
       }); 
     })
   //----------------------------------------------------------------------.// geneeate_sgin_up_link_a 
@@ -251,7 +250,32 @@ $(document).ready(function(){
           });
     });
   //----------------------------------------------------------------------.// adding agent        
-});      
+});   
+function unsecuredCopyToClipboard(id) {
+  if (window.isSecureContext && navigator.clipboard) {
+      var msg_text = $(id).val();//document.querySelector(calss).value;
+          navigator.clipboard.writeText(msg_text);
+          $('#alertbox_success').text('Message Copied');
+          $('#alertbox_success').show(500);
+          setTimeout(() => { $('#alertbox_success').hide(500);  }, 2000);
+  } else {
+      var msg_text = $(id).text();//document.querySelector(calss).value;
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+          document.execCommand('copy');
+      } catch (err) {
+          console.error('Unable to copy to clipboard', err);
+      }
+      document.body.removeChild(textArea);
+      $('#alertbox_success').text('Message Copied');
+      $('#alertbox_success').show(500);
+      setTimeout(() => { $('#alertbox_success').hide(500);  }, 2000);
+  }               
+}   
 </script>
 <?php
 include 'compo/foot.admin.php';

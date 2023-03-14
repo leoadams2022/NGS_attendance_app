@@ -1,21 +1,5 @@
 <?php
 include 'compo/head.admin.php';
-/************  Dont forget you have acsess to ****************
-    $id =  $_SESSION["id"];
-    $first_name = $_SESSION["first_name"] ;
-    $last_name = $_SESSION["last_name"] ;
-    $email = $_SESSION["email"];
-    $user_name = $_SESSION["user_name"];
-    $gender = $_SESSION["gender"];
-    $phone = $_SESSION["phone"] ;
-    $address = $_SESSION["address"];
-    $password =  $_SESSION["password"];
-    $rank = $_SESSION["rank"];
-    $campaign = $_SESSION['campaign'];
-    $education = $_SESSION["education"];
-    $experience = $_SESSION["experience"];
-    $created_at = $_SESSION["created_at"];
-*/
 ?>
 <title>Admin Attendance</title>
 <style>
@@ -49,26 +33,26 @@ include 'compo/navbar.admin.php';
 ?>
 <div class="container attendance_page">
                 
-                <div class="alert alert-danger mt-2 text-center text-capitalize for_in_out_btn" id="alertbox_danger" style='display:none;' role="alert">
-                    this is the alert danger box
-                </div>
-                <div class="alert alert-success mt-2 text-center for_in_out_btn text-capitalize" id="alertbox_success" style='display:none;' role="alert">
-                    this is the alert success box
-                </div>
+    <div class="alert alert-danger mt-2 text-center text-capitalize for_in_out_btn" id="alertbox_danger" style='display:none;' role="alert">
+        this is the alert danger box
+    </div>
+    <div class="alert alert-success mt-2 text-center for_in_out_btn text-capitalize" id="alertbox_success" style='display:none;' role="alert">
+        this is the alert success box
+    </div>
 
-<table class="table table-striped table-hover agints_table" id="agints_table">
-                    <thead>
-                        <tr class="table-dark text-center">
-                            <th class="table-dark text-center text-capitalize Full_Name_th agints_table_th">Full Name</th>
-                            <th class="table-dark text-center text-capitalize user_name_th agints_table_th">user name</th>
-                            <th class="table-dark text-center text-capitalize campaign_th agints_table_th">Campaign</th>
-                            <th class="table-dark text-center text-capitalize month_th agints_table_th" style='width: 5rem !important;'>month</th>                            
-                            <th class="table-dark text-center text-capitalize time_sheet_th agints_table_th" style='width: 5rem !important;'>Time Sheet</th>
-                        </tr>
-                    </thead>
+    <table class="table table-striped table-hover agints_table" id="agints_table">
+        <thead>
+            <tr class="table-dark text-center">
+                <th class="table-dark text-center text-capitalize Full_Name_th agints_table_th">Full Name</th>
+                <th class="table-dark text-center text-capitalize user_name_th agints_table_th">user name</th>
+                <th class="table-dark text-center text-capitalize campaign_th agints_table_th">Campaign</th>
+                <th class="table-dark text-center text-capitalize month_th agints_table_th" style='width: 5rem !important;'>month</th>                            
+                <th class="table-dark text-center text-capitalize time_sheet_th agints_table_th" style='width: 5rem !important;'>Time Sheet</th>
+            </tr>
+        </thead>
         <tbody id='agints_tbody'>
         </tbody>
-        </table>
+    </table>
 <script>
 $(document).ready(function(){
 
@@ -139,9 +123,14 @@ function drawTable(jsData, tbody) {
 });
 function open_timesheet(month_id,username,userid){
     let month =  document.getElementById(month_id).value;
-
-    window.location.href = href=`<?=ROOT?>admin/attendance_sub_pages/agent_attendance.php?username=${username}&userid=${userid}&month=${month}`;
-   
+    var win = window.open(`<?=ROOT?>admin/attendance_sub_pages/agent_attendance.php?username=${username}&userid=${userid}&month=${month}`, '_blank')
+    if (win) {
+            //Browser has allowed it to be opened
+            win.focus();
+        } else {
+            //Browser has blocked it
+            alert('Please allow popups for this website');
+        }
 }
 </script>
 <?php

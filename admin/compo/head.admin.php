@@ -1,8 +1,8 @@
 <?php
 session_start();
 include('config.admin.php');
-include '../clasess/Users_Class.php';
-include '../clasess/Token_Class.php';
+header("Content-type: text/html; charset=utf-8");
+
 if(isset($_SESSION["user_name"])){
     $id =  $_SESSION["id"];
     $first_name = $_SESSION["first_name"] ;
@@ -20,6 +20,8 @@ if(isset($_SESSION["user_name"])){
     $created_at = $_SESSION["created_at"];
 }else{
   if(isset($_COOKIE['remember_me'])){
+    include '../clasess/Users_Class.php';
+    include '../clasess/Token_Class.php';
     //json_decode($_COOKIE['remember_me'])->hashed_string;
     //json_decode($_COOKIE['remember_me'])->username;
     $token_class = new Token_Class();

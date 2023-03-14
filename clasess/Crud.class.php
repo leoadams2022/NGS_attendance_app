@@ -59,15 +59,16 @@ class Crud extends PDO{
   private $lastInsertId_a; 
   public function __construct($dsn_p = DATA_BASE, $username_p = USER, $password_p = PASSWORD)
   {
-    parent::__construct("mysql:host=".HOST.";dbname=$dsn_p;charset=utf8", $username_p, $password_p);
-    $this->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
-    $this->lastInsertId_a = 0;
+    // parent::__construct("mysql:host=".HOST.";dbname=$dsn_p;charset=utf8", $username_p, $password_p);
+    // $this->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
+    // $this->lastInsertId_a = 0;
   }
   public function test($dsn_p = DATA_BASE, $username_p = USER, $password_p = PASSWORD)
   {
     parent::__construct("mysql:host=".HOST.";dbname=$dsn_p;charset=UTF8", $username_p, $password_p);
     $this->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, TRUE);
     $this->lastInsertId_a = 0;
+    // parent::exec("SET NAMES 'utf8'");
   }
 /*=====================================================================
                         METHODE SHOW FIELDS TABLE 

@@ -462,16 +462,16 @@ $('#reset_all_target_btn').click(function(){
     });
 });
 function reset_all_target(){
-    add_loading_class='no'
-    $body = $("body");
-    $body.addClass("loading"); 
+    // add_loading_class='no'
+    // $body = $("body");
+    // $body.addClass("loading"); 
     $('#alert_close_btn').click();
     $('.target').each(function(){
         $( this ).val(0)
     })
     update_all_agint_data();
-    $body.removeClass("loading");
-    add_loading_class= 'yes'
+    // $body.removeClass("loading");
+    // add_loading_class= 'yes'
     
 }
 
@@ -484,16 +484,16 @@ $('#reset_all_salary_btn').click(function(){
 });
 
 function reset_all_salary(){
-    add_loading_class='no'
-    $body = $("body");
-    $body.addClass("loading"); 
+    // add_loading_class='no'
+    // $body = $("body");
+    // $body.addClass("loading"); 
     $('#alert_close_btn').click();
     $('.salary').each(function(){
         $( this ).val(0)
     })
     update_all_agint_data();
-    $body.removeClass("loading");
-    add_loading_class= 'yes'
+    // $body.removeClass("loading");
+    // add_loading_class= 'yes'
 }
 
 $('#reset_all_dedication_btn').click(function(){
@@ -505,16 +505,16 @@ $('#reset_all_dedication_btn').click(function(){
 });
 
 function reset_all_dedication(){
-    add_loading_class='no'
-    $body = $("body");
-    $body.addClass("loading"); 
+    // add_loading_class='no'
+    // $body = $("body");
+    // $body.addClass("loading"); 
     $('#alert_close_btn').click();
     $('.dedication').each(function(){
         $( this ).val(0)
     })
     update_all_agint_data();
-    $body.removeClass("loading");
-    add_loading_class= 'yes'
+    // $body.removeClass("loading");
+    // add_loading_class= 'yes'
 }
  
 </script>

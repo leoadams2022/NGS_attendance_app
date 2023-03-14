@@ -1,8 +1,8 @@
 <?php
 // session_start();
 include '../compo/head.admin.php';
-include '../clasess/Attendance_Class.php';
-include '../clasess/Users_Class.php';
+include '../../clasess/Attendance_Class.php';
+include '../../clasess/Users_Class.php';
 /************  Dont forget you have acsess to ****************
     $id =  $_SESSION["id"];
     $first_name = $_SESSION["first_name"] ;

@@ -135,8 +135,7 @@ class Token_Class extends Crud {
     }
     
 
-    public function RandomString($n) {
-        // $n=8;
+    public function RandomString($n){
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
         for ($i = 0; $i < $n; $i++) {
