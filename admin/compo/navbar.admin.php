@@ -33,7 +33,7 @@
             <div class="header_img" id="header_img_div">
                 <!-- profile image https://i.imgur.com/hczKIze.jpg -->
                 
-                <a href="<?=ROOT?>profile.php">
+                <a href="<?=ROOT?>admin/profile.admin.php">
                     <img src="<?php
                     if(file_exists('images/'. $user_name .'_profile_image.jpg')){
                         echo ROOT . 'images/'. $user_name .'_profile_image.jpg?t='.time();

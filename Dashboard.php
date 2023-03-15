@@ -123,7 +123,7 @@ include 'compo/navbar.php';
 -->
 <!-- target card->[id's] span# target_progressbar span# target_per_counter span# target_still_need -->
       <div class="col-sm-4">
-    		<div class="tile-progress tile-blue">
+    		<div class="tile-progress tile-blue" id="target_card">
     			<div class="tile-header">
     				<h3>Target</h3>
     				<span>your target is 22 per month</span>
@@ -142,7 +142,7 @@ include 'compo/navbar.php';
     	</div>
 <!-- attendance card->[id's] span# attendance_progressbar , span# attendance_per_counter , span# attendance_still_need -->
         <div class="col-sm-4">
-    		<div class="tile-progress tile-primary">
+    		<div class="tile-progress tile-primary" id="attendance_card">
     			<div class="tile-header">
     				<h3>Attendance</h3>
     				<span>so far in this month.</span>
@@ -161,9 +161,9 @@ include 'compo/navbar.php';
 
 
 
-<!-- Salary card->[id's] span# salary_progressbar , span# salary_per_counter , span# salary_still_need -->
+<!-- dedication card->[id's] span# dedication_progressbar , span# dedication_per_counter , span# dedication_still_need -->
       <div class="col-sm-4">
-    		<div class="tile-progress tile-red">
+    		<div class="tile-progress tile-red" id="dedication_card">
     			<div class="tile-header">
     				<h3>Dedications</h3>
     				<span></span>
@@ -180,8 +180,8 @@ include 'compo/navbar.php';
     		</div>
     	</div>
 <!-- Salary card->[id's] span# salary_progressbar , span# salary_per_counter , span# salary_still_need -->
-        <div class="col-sm-4">
-                    <div class="tile-progress tile-cyan">
+        <div class="col-sm-4" id="help">
+                    <div class="tile-progress tile-cyan" id='salary_card'>
                         <div class="tile-header">
                             <h3>Salary</h3>
                             <span>this is your salary</span>
@@ -198,9 +198,7 @@ include 'compo/navbar.php';
                     </div>
                 </div>
         </div>
-<?php
-// print_r(json_decode($_COOKIE['remember_me'])->id);
-?>
+
 
 <script>
 $(document).ready(function(){
@@ -225,7 +223,7 @@ $(document).ready(function(){
             //code goes here
             $body = $("body");
             $body.removeClass("loading");
-            },
+         },
         // function to run if the request was success
         success: function(data, status, xhr){
             // code gos in here
@@ -250,12 +248,12 @@ $(document).ready(function(){
 
             $('#salary_per_counter').text(salary);
 
-            },
+        },
         error: function (Xhr, textStatus, errorMessage) {
             //xhr object , status text
             console.log('Error' + errorMessage + ' status: '+ textStatus);
-            }                                       
-});
+        }                                       
+    });
     // Attendance
     const date = new Date();
     let Thismonth = date.getMonth()+1;
@@ -313,7 +311,96 @@ $(document).ready(function(){
             }                                       
     });
 
+    // crate a tour 
+    let tourOptions= {
+        options : {
+            darkLayerPersistence : true,
+            next : 'Next',
+            prev : 'Previous',
+            finish : 'Okay!',
+            mobileThreshold: 768
+        },
+        tips : [ 
+            //target_card  attendance_card  dedication_card  salary_card  header_img_div
+            {
+                title : '🤘🏼 Target Card',
+                description : 'Here you Can see your target progress',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#target_card',
+                x : 15,
+                y : -5,
+                offx : 0,
+                offy :  0,
+                position : 'bottom',
+                onSelected : false
+            },
+            {
+                title : '🤘🏼 Attendance Card',
+                description : 'Here you Can see your Attendance progress',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#attendance_card',
+                x : 15,
+                y : -5,
+                offx : 0,
+                offy :  0,  
+                position : 'bottom',
+                onSelected : true
+            },
+            {
+                title : '🤘🏼 Dedication Card',
+                description : 'Here you Can see your Dedications hope you never get any',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#dedication_card',
+                x : 10,
+                y : -5,
+                offx : 0,
+                offy :  0,
+                position : 'bottom',
+                onSelected : true
+            },
+            {
+                title : '🤘🏼 Salary Card',
+                description : 'Here you Can see your Salary',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#salary_card',
+                x : 15,
+                y : -5,
+                offx : 0,
+                offy :  0,
+                position : 'bottom',
+                onSelected : true
+            },
+            {
+                title : '🤘🏼 Your Profile',
+                description : 'you can go to your profile from here',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#header_img_div',
+                x : 0,
+                y : 50,
+                offx : 0,
+                offy :  -50,
+                position : 'left',
+                onSelected : true
+            }
+        ]
+    };
+    let tour_cookie = Cookies.get('tour_cookie');
+    if(typeof tour_cookie == 'undefined' || tour_cookie === 'fales'){
+        give_me_a_tour();
+    }
+    // give_me_a_tour();
+    //attendance_card
+    function give_me_a_tour(){
+        ProductTourJS.init(tourOptions);
+        ProductTourJS.start();
+        Cookies.set('tour_cookie', 'true', { expires: 360, path: '' })
+    };
+    
+    $('#help_span').click(function(){
+        give_me_a_tour();
+    });
 });
+
 </script>
 <?php
 include 'compo/foot.php';

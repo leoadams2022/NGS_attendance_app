@@ -107,6 +107,8 @@ if($rank === 'admin'){
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulkr/overhang.js@cc9375d5e93a0b06ba2337963bf9a9e8ac85dad3/lib/overhang.css">
      <!-- overhang js  -->
      <script src="https://cdn.jsdelivr.net/gh/paulkr/overhang.js@cc9375d5e93a0b06ba2337963bf9a9e8ac85dad3/lib/overhang.js"></script>
+     <!-- jquery cookeis plugin  -->
+     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <style>
           ::-webkit-scrollbar {
             width: 8px;

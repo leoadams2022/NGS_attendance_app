@@ -186,7 +186,7 @@ include 'compo/navbar.php';
                             <input type="text" class="form-control" value="<?=$user_name?>" placeholder="user name" id="user_name" disabled readonly>
                         </div>
 					</div>
-					<div class="row mt-3">
+					<div class="row mt-3 bisc_info_tour">
 						<!-- `id`, `first_name`, `last_name`, `email`, `user_name`, `gender`, `phone`, `address`, `password`, `campaign`, `rank`, `education`, `experience`, `created_at` -->
                         <div class="col-md-6">
                             <label class="labels">gender</label>
@@ -432,7 +432,69 @@ $(document).ready(function(){
             });
     }
     upate_file_label()
+    // crate a tour 
+    let tourOptions = {
+        options : {
+            darkLayerPersistence : true,
+            next : 'Next',
+            prev : 'Previous',
+            finish : 'Okay!',
+            mobileThreshold: 768
+        },
+        tips : [ 
+            //target_card  attendance_card  dedication_card  salary_card  header_img_div
+            {
+                title : '🤘🏼 Profile Photo',
+                description : 'Here you Can upload your Profile Photo it must be a jpg photo',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#file_label',
+                x : 50,
+                y : -50,
+                offx : 0,
+                offy :  -10,
+                position : 'bottom',
+                onSelected : false
+            },
+            {
+                title : '🤘🏼 your info',
+                description : 'Here you Can viwe and edit your info',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '.bisc_info_tour',
+                x : 50,
+                y : 50,
+                offx : 0,
+                offy :  0,  
+                position : 'bottom',
+                onSelected : true
+            },
+            {
+                title : '🤘🏼 Update Button',
+                description : 'click this button to update your info',
+                // image : '<?=ROOT?>images/male.png',
+                selector : '#update_profile',
+                x : 50,
+                y : -50,
+                offx : 0,
+                offy :  -30,
+                position : 'bottom',
+                onSelected : true
+            }
+        ]
+    };
+    let tour_cookie = Cookies.get('tour_cookie');
+    // console.log(tour)
+    if(typeof tour_cookie == 'undefined' || tour_cookie === 'fales'){give_me_a_tour()}
+    // give_me_a_tour();
+    //attendance_card
+    function give_me_a_tour(){
+        ProductTourJS.init(tourOptions);
+        ProductTourJS.start();
+        Cookies.set('tour_cookie', 'true', { expires: 360, path: '' })
+    }
     
+    $('#help_span').click(function(){
+        give_me_a_tour();
+    })
 });
 
 </script>

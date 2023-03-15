@@ -19,8 +19,6 @@ include 'compo/head.admin.php';
 ?>
 <!-- adding the search plugin  -->
 <script src="<?=ROOT?>admin/compo/assets/js/jquery-search.js"></script>
- <!-- jquery cookeis plugin  -->
- <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <title>Admin Dashboard</title>
 <style>
     .dataTables_length, .dataTables_filter{

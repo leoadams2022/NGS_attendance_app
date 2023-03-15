@@ -594,7 +594,85 @@ include 'compo/navbar.php';
         }
     }
 
-
+// crate a tour 
+$(document).ready(function(){
+    let tourOptions = {
+        
+            options : {
+                darkLayerPersistence : true,
+                next : 'Next',
+                prev : 'Previous',
+                finish : 'Okay!',
+                mobileThreshold: 768
+            },
+            tips : [ 
+                //target_card  attendance_card  dedication_card  salary_card  header_img_div
+                {
+                    title : '🤘🏼 entry time',
+                    description : 'Here you Can see your entry time',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '#entry_time',
+                    x : 50,
+                    y : -50,
+                    offx : 0,
+                    offy :  -30,
+                    position : 'bottom',
+                    onSelected : false
+                },
+                {
+                    title : '🤘🏼 leave time',
+                    description : 'Here you Can see your leave time',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '#leave_time',
+                    x : 20,
+                    y : -50,
+                    offx : 0,
+                    offy :  -40,  
+                    position : 'bottom',
+                    onSelected : true
+                },
+                {
+                    title : '🤘🏼 Start Or End Buttons',
+                    description : 'click this button to Start Or End your day',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '.btns_div ',
+                    x : 35,
+                    y : -0,
+                    offx : 100,
+                    offy :  -20,
+                    position : 'bottom',
+                    onSelected : true
+                },
+                //attendancce_log_table 
+                {
+                    title : '🤘🏼 Attendancce Log',
+                    description : 'Here you Can see your Attendancce Log and add an excuse if your late or left erly',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '.attendancce_log_table ',
+                    x : 50,
+                    y : -0,
+                    offx : 0,
+                    offy :  -20,
+                    position : 'bottom',
+                    onSelected : true
+                }
+            ]
+        };
+    let tour_cookie = Cookies.get('tour_cookie');
+    // console.log(tour)
+    if(typeof tour_cookie == 'undefined' || tour_cookie === 'fales'){give_me_a_tour()}
+    // give_me_a_tour();
+    //attendance_card
+    function give_me_a_tour(){
+        ProductTourJS.init(tourOptions);
+        ProductTourJS.start();
+        Cookies.set('tour_cookie', 'true', { expires: 360, path: '' })
+    }
+    
+    $('#help_span').click(function(){
+        give_me_a_tour();
+    })
+});
 
 </script>
 <?php

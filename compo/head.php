@@ -100,6 +100,9 @@ if(isset($_SESSION["rank"])){
     <link rel="icon" type="image/x-png" href="https://i.postimg.cc/FHhcxPQW/NGSLogo-removebg-White.png">
     <!--bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     <!-- jquery js  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- jquery.dataTables js -->
@@ -112,6 +115,11 @@ if(isset($_SESSION["rank"])){
     <link href="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" type="text/css" rel="stylesheet" />
     <!-- popup lib  js -->
     <script src="//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- tour toltip  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Francesco-Rizzi/Product-Tour-JS@bd4149a7ea06213d6c31a7a53bc4554c2fc88029/lib.css">
+    <script src="https://cdn.jsdelivr.net/gh/Francesco-Rizzi/Product-Tour-JS@bd4149a7ea06213d6c31a7a53bc4554c2fc88029/lib.js"></script>
+     <!-- jquery cookeis plugin  -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <!-- for the nav bar -->
     <style>
           ::-webkit-scrollbar {
@@ -370,4 +378,14 @@ if(isset($_SESSION["rank"])){
           color: #dbd8e6;
       }
       /**----------------------- */
+      /* for the tour popups  */
+      :root {
+        /* CONFIG VARIABLES */                /* DEFAULTS */
+        --product-tour-js-brand-color       : #3000f9;/*#DCB24C; */
+        --product-tour-js-brand-color-light : rgba(220, 178, 76, 0.43);
+        --product-tour-js-brand-color-dark  : #0096b5; /* #AD8C3E; */
+        --product-tour-js-bg-color          : #FFFFFF;
+        --product-tour-js-bg-color-dark     : #F7F7F7;
+        --product-tour-js-font              : sans-serif;
+      }
 	  </style>

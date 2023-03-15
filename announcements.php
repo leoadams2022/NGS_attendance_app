@@ -113,7 +113,7 @@ include 'compo/head.php';
                 line-height: 30px;
                 font-weight: 800;
             }
-            span#copy {
+            span.copy {
                 font-size: 20px;
                 float: right;
                 color: #9e9e9e70;
@@ -122,7 +122,7 @@ include 'compo/head.php';
                 cursor: pointer;
                 margin-top: -20px;
             }
-            span#copy:hover {
+            span.copy:hover {
                 color: blue;
             }
             .alert_for_Copy_func {
@@ -256,10 +256,10 @@ function get_msgs(){
                                 
                                 <div class="post-comments">
                                     <p class="meta">
-                                        <span id="date">${send_time}</span>
-                                        <span id="auther">${msg.auther}</span> : 
+                                        <span id="date_${i}">${send_time}</span>
+                                        <span id="auther_${i}">${msg.auther}</span> : 
                                     </p>
-                                    <p id="msg" class="msg msg_${i}">${fullMsg}<span id="copy" onclick="unsecuredCopyToClipboard('.msg_${i}');">
+                                    <p id="msg_${i}" class="msg msg_${i}">${fullMsg}<span id="copy_${i}"  class='copy' onclick="unsecuredCopyToClipboard('.msg_${i}');">
                                         <i class="bx bxs-copy-alt"></i>
                                     </span>
                                     </p>
@@ -326,11 +326,11 @@ function get_more_msgs(){
                                 
                                 <div class="post-comments">
                                     <p class="meta">
-                                        <span id="date">${send_time}</span>
-                                        <span id="auther">${msg.auther}</span>
+                                        <span id="date_${i}">${send_time}</span>
+                                        <span id="auther_${i}">${msg.auther}</span>
                                         says : 
                                     </p>
-                                    <p id="msg" class="msg msg_${i}">${fullMsg}<span id="copy" onclick="unsecuredCopyToClipboard('.msg_${i}');">
+                                    <p id="msg_${i}" class="msg msg_${i}">${fullMsg}<span id="copy_${i}"  class='copy' onclick="unsecuredCopyToClipboard('.msg_${i}');">
                                         <i class="bx bxs-copy-alt"></i>
                                     </span>
                                     </p>
@@ -473,6 +473,73 @@ function DateStringToObject(DateString, return_Type = 'DateObj') {
             return "there is no date";
         }
     }
+
+// crate a tour 
+$(document).ready(function(){
+    let tourOptions = {
+        
+            options : {
+                darkLayerPersistence : true,
+                next : 'Next',
+                prev : 'Previous',
+                finish : 'Okay!',
+                mobileThreshold: 768
+            },
+            tips : [ 
+                //target_card  attendance_card  dedication_card  salary_card  header_img_div
+                {
+                    title : '🤘🏼 Message Content',
+                    description : 'Here you Can see the Message Conten',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '.msg',
+                    x : 50,
+                    y : -50,
+                    offx : 0,
+                    offy :  -10,
+                    position : 'bottom',
+                    onSelected : false
+                },
+                {
+                    title : '🤘🏼 Message auther',
+                    description : 'Here you Can see the  Message auther and the time',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '.meta',
+                    x : 20,
+                    y : -50,
+                    offx : 0,
+                    offy :  -40,  
+                    position : 'bottom',
+                    onSelected : true
+                },
+                {
+                    title : '🤘🏼 copy Button',
+                    description : 'click this button to copy the message',
+                    // image : '<?=ROOT?>images/male.png',
+                    selector : '.copy',
+                    x : 50,
+                    y : -0,
+                    offx : 100,
+                    offy :  -20,
+                    position : 'bottom',
+                    onSelected : true
+                }
+            ]
+        };
+    let tour_cookie = Cookies.get('tour_cookie');
+    // console.log(tour)
+    if(typeof tour_cookie == 'undefined' || tour_cookie === 'fales'){give_me_a_tour()}
+    // give_me_a_tour();
+    //attendance_card
+    function give_me_a_tour(){
+        ProductTourJS.init(tourOptions);
+        ProductTourJS.start();
+        Cookies.set('tour_cookie', 'true', { expires: 360, path: '' })
+    }
+    
+    $('#help_span').click(function(){
+        give_me_a_tour();
+    })
+});
 </script>
 <?php
 include 'compo/foot.php';

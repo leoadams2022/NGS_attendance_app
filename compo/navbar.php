@@ -65,8 +65,13 @@
                         <i class='bx bx-list-check nav_icon'></i>
                         <span class="nav_name">Sales</span>
                     </a> -->
+                    <span style="cursor: pointer;" title="Help" id='help_span' class="nav_link help_span">
+                        <i class='bx bxs-help-circle nav_icon'></i>
+                        <span class="nav_name">Help</a></span>
+                    </span>
                 </div>
             </div> 
+            
             <a title="SignOut" href="<?=ROOT?>sgin_out.php" class="nav_link">
                 <i class='bx bx-log-out nav_icon'></i>
                 <span class="nav_name">SignOut</a></span>
