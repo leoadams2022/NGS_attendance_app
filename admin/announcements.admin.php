@@ -419,7 +419,7 @@ include 'compo/navbar.admin.php';
                                 
                                 <ul class="comments" id='msgsUL'>
                                          <div class="landing_chat_div">
-                                            <img src="<?=ROOT?>images/chat_landing.png" class="chat_landing_img img-fluid" alt="" srcset="">
+                                            <img src="https://images2.imgbox.com/85/2d/kNcNovFf_o.png" class="chat_landing_img img-fluid" alt="" srcset="">
                                          </div>
                                 </ul>
                                <!-- it was here   onkeyup-->
@@ -621,6 +621,7 @@ function DrawMsgs(data){
         var msgsUl = document.getElementById('msgsUL');
         msgsUl.innerHTML = '';
         msgsUl.innerHTML = `<div class="get_more_msgs_btn" id="get_more_msgs_btn_${offset}"><span onclick="get_more_msgs()">get more</span></div>`;
+        let Cuernt_user = '<?=$user_name?>';
         msgs_obj.forEach(function (msg, i){
                 let recipient = '';
                 let name = '';
@@ -648,6 +649,10 @@ function DrawMsgs(data){
                     let leave_time_update = msg.msg.slice(-16);
                     leave_time_update =DateStringToObject(leave_time_update+':00').toLocaleTimeString("en-US");
                     fullMsg = msg.msg.slice(0,40)+ leave_time_update;
+                }
+                let Msg_auther = 'Me';
+                if(msg.auther != Cuernt_user){
+                    Msg_auther = msg.auther;
                 }
                 msgsUl.innerHTML +=`
                 <li class="clearfix">
@@ -683,7 +688,7 @@ function DrawMsgs(data){
                             delete_msg('${msg.id}','${recipient}','${name}');
                             "><i class="bx bxs-message-x"></i></span>
                         </div>
-                        <span id="date" class='date_span'>${send_time}  ${seen_icon}</span>
+                        <span id="date" class='date_span'>${send_time}  ${seen_icon}  By: ${Msg_auther}</span>
                     </div>
                 </li> 
                 `;

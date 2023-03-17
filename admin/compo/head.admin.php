@@ -18,8 +18,7 @@ if(isset($_SESSION["user_name"])){
     $education = $_SESSION["education"];
     $experience = $_SESSION["experience"];
     $created_at = $_SESSION["created_at"];
-}else{
-  if(isset($_COOKIE['remember_me'])){
+}elseif(isset($_COOKIE['remember_me'])){
     include '../clasess/Users_Class.php';
     include '../clasess/Token_Class.php';
     //json_decode($_COOKIE['remember_me'])->hashed_string;
@@ -71,8 +70,8 @@ if(isset($_SESSION["user_name"])){
     }else{
       header('location: sgin_in.php');
     }
-  }  
-}
+  } 
+// agent cant go to admin page
 if($rank === 'admin'){
 
 }else{
