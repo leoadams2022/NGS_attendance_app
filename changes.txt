@@ -37,5 +37,7 @@
 - add download as excel fill to the agent attendance sheet page
 - add agent can upload a pdf CV 
 - store css and js files on github and images on imgbox.com 
-
+- add sending a bay slip to the agent
+- add actions log for the admins
+- add a note of duble paied days for sat and sun days or you can set weekends days at the attendance sheet page
 
